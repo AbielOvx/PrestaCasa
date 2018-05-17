@@ -1,0 +1,81 @@
+firebase.initializeApp({
+    apiKey: "AIzaSyDZQPI_DkvJYAZP6ySwU4x0v34RoUXUyu0",
+    authDomain: "prestacasa-1758e.firebaseapp.com",
+    databaseURL: "https://prestacasa-1758e.firebaseio.com",
+    projectId: "prestacasa-1758e",
+    storageBucket: "prestacasa-1758e.appspot.com",
+    messagingSenderId: "315948810598"
+  });
+  
+  // Initialize Cloud Firestore through Firebase
+  var db = firebase.firestore();
+
+  //Crear Documentos
+  function guardarA(){
+      var nombre = document.getElementById('nombre').value;
+      var apellidoP = document.getElementById('apellidoP').value;
+      var apellidoM = document.getElementById('apellidoM').value;
+      var usuario = document.getElementById('usuario').value;
+      var pass = document.getElementById('pass').value;
+      var edad = document.getElementById('edad').value;
+      var telefono = document.getElementById('telefono').value;
+      var email = document.getElementById('email').value;
+      var sexo = document.getElementById('sexo').value;
+
+    if(document.getElementById('pass').value != document.getElementById('pass2').value){
+        alert('Las contraseñas no coinciden');
+        document.getElementById('pass').value = '';
+        document.getElementById('pass2').value = '';
+        document.getElementById('pass').focus();
+
+    }else{  
+
+        if(
+            document.getElementById('nombre').value == '' ||
+            document.getElementById('apellidoP').value == '' ||
+            document.getElementById('apellidoM').value == '' ||
+            document.getElementById('usuario').value == '' ||
+            document.getElementById('pass').value == '' ||
+            document.getElementById('pass2').value == '' ||
+            document.getElementById('edad').value == '' ||
+            document.getElementById('telefono').value == '' ||
+            document.getElementById('email').value == '' ||
+            document.getElementById('sexo').value == ''
+        ){
+            alert("Porfavor verifique sus datos para continuar");
+        }else{
+            db.collection("Agentes").add({
+                Nombre: nombre,
+                ApellidoP: apellidoP,
+                ApellidoM: apellidoM,
+                Usuario:usuario,
+                Password:pass,
+                Edad:edad,
+                Telefono:telefono,
+                Email:email,
+                Sexo:sexo,
+            })
+            .then(function(docRef) {
+                alert("El Agente ha sido registrado");
+                document.getElementById('nombre').value = '';
+                document.getElementById('apellidoP').value = '';
+                document.getElementById('apellidoM').value = '';
+                document.getElementById('usuario').value = '';
+                document.getElementById('pass').value = '';
+                document.getElementById('pass2').value = '';
+                document.getElementById('edad').value = '';
+                document.getElementById('telefono').value = '';
+                document.getElementById('email').value = '';
+           
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+            });
+        
+
+
+        }
+    }
+
+    
+}
