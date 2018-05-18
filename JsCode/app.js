@@ -81,7 +81,6 @@ function editar(id,nombre,apellido,fecha){
         var apellido = document.getElementById('apellido').value;
         var fecha = document.getElementById('fecha').value;
         
-
         return washingtonRef.update({
             Nombre: nombre,
             Apellido: apellido,
@@ -93,16 +92,10 @@ function editar(id,nombre,apellido,fecha){
             document.getElementById('nombre').value = '';
             document.getElementById('apellido').value = '';
             document.getElementById('fecha').value = '';
-            
-
         })
         .catch(function(error) {
             // The document probably doesn't exist.
             console.error("Error updating document: ", error);
         });
-
     }
-    
-
-
 }

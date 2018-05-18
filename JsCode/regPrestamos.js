@@ -10,39 +10,93 @@ firebase.initializeApp({
   // Initialize Cloud Firestore through Firebase
   var db = firebase.firestore();
 
-  //Crear Documentos
+
+
+
+
+  
+//Leer clientes
+function clientess(){
+
+
+    db.collection("Usuarios").get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            
+            
+            document.getElementById('clientes').innerHTML += `
+            <option value="${doc.data().Nombre + ' ' + doc.data().Apellido }">
+            ${doc.data().Nombre + ' ' + doc.data().Apellido}</option>
+            `
+        });
+    });
+}
+
+function interes(){
+    var interes = 0;
+    var cantidad = document.getElementById('cantidad').value;
+    
+    interes = (cantidad*0.05)/4;
+
+    document.getElementById('interes').value = interes;
+
+}
+
+function pago(){
+   
+    var cantidad = document.getElementById('cantidad').value;
+    var semanas = document.getElementById('semanas').value;
+    var interes = document.getElementById('interes').value;
+
+    var pago = cantidad/semanas;
+
+    var total = parseInt(pago) + parseInt(interes);
+
+    document.getElementById('pSemanal').value = total;
+
+    var pTotal = (parseInt(semanas)* parseInt(interes)) + parseInt(cantidad);
+
+    document.getElementById('pTotal').value = pTotal;
+}
+    
+
+
+//Crear Documentos
   function guardarP(){
-      var nombre = document.getElementById('nombre').value;
-      var apellidoP = document.getElementById('apellidoP').value;
-      var apellidoM = document.getElementById('apellidoM').value;
-      var edad = document.getElementById('edad').value;
-      var telefono = document.getElementById('telefono').value;
-      var direccion = document.getElementById('direccion').value;
-      var sexo = document.getElementById('sexo').value;
+      var cliente = document.getElementById('clientes').value;
+      var cantidad = document.getElementById('cantidad').value;
+      var fecha = document.getElementById('fecha').value;
+      var fpPago = document.getElementById('fpPago').value;
+      var semanas = document.getElementById('semanas').value;
+      var interes = document.getElementById('interes').value;
+      var pSemanal = document.getElementById('pSemanal').value;
+      var pTotal = document.getElementById('pTotal').value;
 
     db.collection("Prestamos").add({
-        Nombre: nombre,
-        ApellidoP: apellidoP,
-        ApellidoM: apellidoM,
-        Edad:edad,
-        Telefono:telefono,
-        Direccion:direccion,
-        Sexo:sexo,
+        Cliente: cliente,
+        Cantidad: cantidad,
+        Fecha: fecha,
+        FechaPrimerPago: fpPago,
+        Semanas:semanas,
+        Interes:interes,
+        PagoSemanal:pSemanal,
+        PagoTotal:pTotal,
+
     })
     .then(function(docRef) {
-        alert("El Cliente ha sido registrado");
-        document.getElementById('nombre').value = '';
-        document.getElementById('apellidoP').value = '';
-        document.getElementById('apellidoM').value = '';
-        document.getElementById('edad').value = '';
-        document.getElementById('telefono').value = '';
-        document.getElementById('direccion').value = '';
+        alert("El Prestamo ha sido registrado");
+        document.getElementById('clientes').value = '';
+        document.getElementById('cantidad').value = '';
+        document.getElementById('fecha').value = '';
+        document.getElementById('fpPago').value = '';
+        document.getElementById('semanas').value = '';
+        document.getElementById('interes').value = '';
+        document.getElementById('pSemanal').value = '';
+        document.getElementById('pTotal').value = '';
         
-
-
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
-
   }
+
