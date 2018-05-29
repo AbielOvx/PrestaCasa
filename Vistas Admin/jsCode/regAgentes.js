@@ -11,7 +11,7 @@ firebase.initializeApp({
   var db = firebase.firestore();
 
   //Crear Documentos
-  function guardarA(){
+  guardarA = function(){
       var nombre = document.getElementById('nombre').value;
       var apellidoP = document.getElementById('apellidoP').value;
       var apellidoM = document.getElementById('apellidoM').value;
@@ -115,7 +115,7 @@ function editar(id,nombre,apellidoP,apellidoM,usuario,pass,edad,telefono,email,s
 
     var boton = document.getElementById('boton');
     boton.innerHTML = 'Actualizar';
-
+ 
     boton.onclick= function(){
 
         var washingtonRef = db.collection("Agentes").doc(id);
@@ -153,7 +153,7 @@ function editar(id,nombre,apellidoP,apellidoM,usuario,pass,edad,telefono,email,s
             document.getElementById('edad').value = '';
             document.getElementById('telefono').value = '';
             document.getElementById('email').value = '';
-            
+            boton.onclick = guardarA;
         })
         .catch(function(error) {
             // The document probably doesn't exist.

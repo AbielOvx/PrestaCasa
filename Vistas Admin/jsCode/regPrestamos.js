@@ -56,9 +56,35 @@ function pago(){
 }
 
 //Fechas
+    // var f = new Date();
+    // document.getElementById('fecha').value= f.getDate() + "/" + (f.getMonth()+1) + "/" + f.getFullYear();
+    // document.getElementById('prueba').value = f.getDate() ;
+
+    // if(f.getDay()==6){
+    //     document.getElementById('fpPago').value=(f.getDate()+9) + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
+    // }else{
+    //     document.getElementById('fpPago').value=(f.getDate()+8) + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
+    // }
+
+    var myDate = new Date();
     var f = new Date();
-    document.getElementById('fecha').value= f.getDate() + "/" + (f.getMonth()+1) + "/" + f.getFullYear();
-    document.getElementById('fpPago').value=(f.getDate()+8) + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
+    
+    myDate.getFullYear();
+    myDate.getDate();
+    myDate.getMonth();
+
+    var sunday = myDate.getDay();
+    while (myDate.getDay() != sunday) {
+        myDate.setDate(myDate.getDate()+1);
+    }
+
+    myDate.setDate(myDate.getDate()+7);
+
+    document.getElementById('fecha').value = f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
+    document.getElementById('fpPago').value = myDate.getDate() + "/" + (myDate.getMonth() +1) + "/" + myDate.getFullYear();
+
+
+
  
     
 

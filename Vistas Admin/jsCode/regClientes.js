@@ -135,10 +135,14 @@ function editar(id,nombre,apellidoP,apellidoM,edad,telefono,direccion,sexo){
             document.getElementById('telefono').value = '';
             document.getElementById('direccion').value = '';
             
-        })
+        }
+    )
+
         .catch(function(error) {
             // The document probably doesn't exist.
             console.error("Error updating document: ", error);
         });
+        
     }
+    
 }
