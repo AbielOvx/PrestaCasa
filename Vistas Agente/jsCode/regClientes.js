@@ -6,10 +6,14 @@ firebase.initializeApp({
     storageBucket: "prestacasa-1758e.appspot.com",
     messagingSenderId: "315948810598"
   });
-  
+
   // Initialize Cloud Firestore through Firebase
   var db = firebase.firestore();
 
+  //Cerrar sesion
+   btnLogout.addEventListener('click', e => {
+     firebase.auth().signOut();
+   })
   //Crear Documentos
   function guardarC(){
       var nombre = document.getElementById('nombre').value;
@@ -47,9 +51,9 @@ firebase.initializeApp({
             document.getElementById('edad').value = '';
             document.getElementById('telefono').value = '';
             document.getElementById('direccion').value = '';
-            
-    
-    
+
+
+
         })
         .catch(function(error) {
             alert("El cliente no se pudo registrar, intentelo de nuevo");
@@ -64,7 +68,7 @@ var tabla = document.getElementById('tabla');
 db.collection("Clientes").onSnapshot((querySnapshot) =>{
     tabla.innerHTML = '';
     querySnapshot.forEach((doc)=>{
-        
+
         console.log(`${doc.id} => ${doc.data().Nombre}`);
         document.getElementById('tabla').innerHTML += `
         <tr>
@@ -114,8 +118,8 @@ function editar(id,nombre,apellidoP,apellidoM,edad,telefono,direccion,sexo){
         var telefono = document.getElementById('telefono').value;
         var direccion = document.getElementById('direccion').value;
         var sexo = document.getElementById('sexo').value;
-        
-        
+
+
         return editar.update({
                 Nombre: nombre,
                 ApellidoP: apellidoP,
@@ -134,7 +138,7 @@ function editar(id,nombre,apellidoP,apellidoM,edad,telefono,direccion,sexo){
             document.getElementById('edad').value = '';
             document.getElementById('telefono').value = '';
             document.getElementById('direccion').value = '';
-            
+
         }
     )
 
@@ -142,7 +146,7 @@ function editar(id,nombre,apellidoP,apellidoM,edad,telefono,direccion,sexo){
             // The document probably doesn't exist.
             console.error("Error updating document: ", error);
         });
-        
+
     }
-    
+
 }
