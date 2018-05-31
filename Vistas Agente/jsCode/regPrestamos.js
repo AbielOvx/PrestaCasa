@@ -10,11 +10,6 @@ firebase.initializeApp({
   // Initialize Cloud Firestore through Firebase
   var db = firebase.firestore();
 
-    //Cerrar sesion
-    btnLogout.addEventListener('click', e => {
-        firebase.auth().signOut();
-    })
-
     firebase.auth().onAuthStateChanged(firebaseUser => {
       if (!firebaseUser) {
         window.location.replace("http://localhost/PrestaCasa/vistasAgente/index.html");
@@ -25,7 +20,12 @@ firebase.initializeApp({
     });
     var user = firebase.auth().currentUser;
 
-//Leer clientes
+    //Cerrar sesion
+    btnLogout.addEventListener('click', e => {
+        firebase.auth().signOut();
+    })
+
+    //Leer clientes
     db.collection("Clientes").get().then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
             // doc.data() is never undefined for query doc snapshots
