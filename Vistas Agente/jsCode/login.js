@@ -26,6 +26,18 @@ firebase.initializeApp({
      var errorCode = error.code;
      var errorMessage = error.message;
      // ...
+     var emailFormat = "Revisa que escribiste bien tu correo";
+     var passInvalid = "Contraseña invalida o no existe la cuenta";
+     var userNone = "Correo no registrado"
+     if (errorMessage === "The email address is badly formatted.") {
+      errorMessage = emailFormat;
+     }
+     if (errorMessage === "There is no user record corresponding to this identifier. The user may have been deleted.") {
+      errorMessage = userNone;
+     }
+     if (errorMessage === "The password is invalid or the user does not have a password.") {
+      errorMessage = passInvalid;
+     }
      alert('Error: '+errorMessage);
    });
 
