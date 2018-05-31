@@ -12,7 +12,7 @@ firebase.initializeApp({
 
     firebase.auth().onAuthStateChanged(firebaseUser => {
       if (!firebaseUser) {
-        window.location.replace("http://localhost/PrestaCasa/vistasAgente/index.html");
+          window.location.replace("file:///C:/xampp/htdocs/PrestaCasa/Vistas%20Agente/RegClientes.html");
         // location.href ="file:///C:/xampp/htdocs/PrestaCasa/Vistas%20Agente/RegClientes.html";
       }else {
         console.log('si logeado');

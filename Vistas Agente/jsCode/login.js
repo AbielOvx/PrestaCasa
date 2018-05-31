@@ -33,7 +33,7 @@ firebase.initializeApp({
  //Añadir un listener en tiempo real
  firebase.auth().onAuthStateChanged(firebaseUser => {
    if (firebaseUser) {
-     window.location.replace("http://localhost/PrestaCasa/vistasAgente/RegClientes.html");
+     window.location.replace("file:///C:/xampp/htdocs/PrestaCasa/Vistas%20Agente/RegClientes.html");
      // location.href ="file:///C:/xampp/htdocs/PrestaCasa/Vistas%20Agente/RegClientes.html";
    }else {
      console.log('no logeado');
