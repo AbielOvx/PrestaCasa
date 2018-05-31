@@ -6,21 +6,26 @@ firebase.initializeApp({
     storageBucket: "prestacasa-1758e.appspot.com",
     messagingSenderId: "315948810598"
   });
-  
+
   // Initialize Cloud Firestore through Firebase
   var db = firebase.firestore();
 
   //Crear Documentos
   guardarA = function(){
+
       var nombre = document.getElementById('nombre').value;
       var apellidoP = document.getElementById('apellidoP').value;
       var apellidoM = document.getElementById('apellidoM').value;
-      var usuario = document.getElementById('usuario').value;
       var pass = document.getElementById('pass').value;
       var edad = document.getElementById('edad').value;
       var telefono = document.getElementById('telefono').value;
       var email = document.getElementById('email').value;
       var sexo = document.getElementById('sexo').value;
+      const auth = firebase.auth();
+      //Añadimos el evento del sign Up
+      const promise = auth.createUserWithEmailAndPassword(email, pass);
+      promise.catch(e => console.log(e.message));
+
 
     if(document.getElementById('pass').value != document.getElementById('pass2').value){
         alert('Las contraseñas no coinciden');
@@ -28,13 +33,12 @@ firebase.initializeApp({
         document.getElementById('pass2').value = '';
         document.getElementById('pass').focus();
 
-    }else{  
+    }else{
 
         if(
             document.getElementById('nombre').value == '' ||
             document.getElementById('apellidoP').value == '' ||
             document.getElementById('apellidoM').value == '' ||
-            document.getElementById('usuario').value == '' ||
             document.getElementById('pass').value == '' ||
             document.getElementById('pass2').value == '' ||
             document.getElementById('edad').value == '' ||
@@ -48,7 +52,6 @@ firebase.initializeApp({
                 Nombre: nombre,
                 ApellidoP: apellidoP,
                 ApellidoM: apellidoM,
-                Usuario:usuario,
                 Password:pass,
                 Edad:edad,
                 Telefono:telefono,
@@ -60,13 +63,12 @@ firebase.initializeApp({
                 document.getElementById('nombre').value = '';
                 document.getElementById('apellidoP').value = '';
                 document.getElementById('apellidoM').value = '';
-                document.getElementById('usuario').value = '';
                 document.getElementById('pass').value = '';
                 document.getElementById('pass2').value = '';
                 document.getElementById('edad').value = '';
                 document.getElementById('telefono').value = '';
                 document.getElementById('email').value = '';
-           
+
             })
             .catch(function(error) {
                 alert("El agente no se pudo registrar, intentelo de nuevo");
@@ -81,20 +83,19 @@ var tabla = document.getElementById('tabla');
 db.collection("Agentes").onSnapshot((querySnapshot) =>{
     tabla.innerHTML = '';
     querySnapshot.forEach((doc)=>{
-        
+
         console.log(`${doc.id} => ${doc.data().Nombre}`);
         document.getElementById('tabla').innerHTML += `
         <tr>
             <td>${doc.data().Nombre}</td>
             <td>${doc.data().ApellidoP}</td>
             <td>${doc.data().ApellidoM}</td>
-            <td>${doc.data().Usuario}</td>
             <td>${doc.data().Password}</td>
             <td>${doc.data().Edad}</td>
             <td>${doc.data().Telefono}</td>
             <td>${doc.data().Email}</td>
             <td>${doc.data().Sexo}</td>
-            <td><button class="btn btn-warning" onclick="editar('${doc.id}','${doc.data().Nombre}','${doc.data().ApellidoP}','${doc.data().ApellidoM}','${doc.data().Usuario}','${doc.data().Password}','${doc.data().Edad}','${doc.data().Telefono}','${doc.data().Email}','${doc.data().Sexo}')">Editar</button></td>
+            <td><button class="btn btn-warning" onclick="editar('${doc.id}','${doc.data().Nombre}','${doc.data().ApellidoP}','${doc.data().ApellidoM}','${doc.data().Password}','${doc.data().Edad}','${doc.data().Telefono}','${doc.data().Email}','${doc.data().Sexo}')">Editar</button></td>
             <td><button class="btn btn-danger"  onclick="eliminar('${doc.id}')">Eliminar</button></td>
           </tr>
         `
@@ -102,11 +103,10 @@ db.collection("Agentes").onSnapshot((querySnapshot) =>{
 });
 
 //Editar Documentos
-function editar(id,nombre,apellidoP,apellidoM,usuario,pass,edad,telefono,email,sexo){
+function editar(id,nombre,apellidoP,apellidoM,pass,edad,telefono,email,sexo){
     document.getElementById('nombre').value = nombre;
     document.getElementById('apellidoP').value = apellidoP;
     document.getElementById('apellidoM').value = apellidoM;
-    document.getElementById('usuario').value = usuario;
     document.getElementById('pass').value = pass;
     document.getElementById('edad').value = edad;
     document.getElementById('telefono').value = telefono;
@@ -115,26 +115,24 @@ function editar(id,nombre,apellidoP,apellidoM,usuario,pass,edad,telefono,email,s
 
     var boton = document.getElementById('boton');
     boton.innerHTML = 'Actualizar';
- 
+
     boton.onclick= function(){
 
         var washingtonRef = db.collection("Agentes").doc(id);
         var nombre = document.getElementById('nombre').value;
         var apellidoP = document.getElementById('apellidoP').value;
         var apellidoM = document.getElementById('apellidoM').value;
-        var usuario = document.getElementById('usuario').value;
         var pass = document.getElementById('pass').value;
         var edad = document.getElementById('edad').value;
         var telefono = document.getElementById('telefono').value;
         var email = document.getElementById('email').value;
         var sexo = document.getElementById('sexo').value;
-        
-        
+
+
         return washingtonRef.update({
                 Nombre: nombre,
                 ApellidoP: apellidoP,
                 ApellidoM: apellidoM,
-                Usuario:usuario,
                 Password:pass,
                 Edad:edad,
                 Telefono:telefono,
@@ -146,7 +144,6 @@ function editar(id,nombre,apellidoP,apellidoM,usuario,pass,edad,telefono,email,s
             document.getElementById('nombre').value = '';
             document.getElementById('apellidoP').value = '';
             document.getElementById('apellidoM').value = '';
-            document.getElementById('usuario').value = '';
             document.getElementById('pass').value = '';
             document.getElementById('pass2').value = '';
             document.getElementById('edad').value = '';
@@ -175,4 +172,3 @@ function eliminar(id){
         console.error("Error removing document: ", error);
     });
 }
-
