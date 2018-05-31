@@ -11,7 +11,7 @@ firebase.initializeApp({
   var db = firebase.firestore();
 
   //Crear Documentos
-  function guardarC(){
+  guardarC = function(){
       var nombre = document.getElementById('nombre').value;
       var apellidoP = document.getElementById('apellidoP').value;
       var apellidoM = document.getElementById('apellidoM').value;
@@ -127,13 +127,14 @@ function editar(id,nombre,apellidoP,apellidoM,edad,telefono,direccion,sexo){
         })
         .then(function() {
             console.log("Document successfully updated!");
-            boton.innerHTML="Agregar";
             document.getElementById('nombre').value = '';
             document.getElementById('apellidoP').value = '';
             document.getElementById('apellidoM').value = '';
             document.getElementById('edad').value = '';
             document.getElementById('telefono').value = '';
             document.getElementById('direccion').value = '';
+            boton.innerHTML="Agregar";
+            boton.onclick = guardarC;
             
         }
     )

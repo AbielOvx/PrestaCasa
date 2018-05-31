@@ -143,7 +143,6 @@ function editar(id,nombre,apellidoP,apellidoM,usuario,pass,edad,telefono,email,s
         })
         .then(function() {
             console.log("Document successfully updated!");
-            boton.innerHTML="Agregar";
             document.getElementById('nombre').value = '';
             document.getElementById('apellidoP').value = '';
             document.getElementById('apellidoM').value = '';
@@ -153,6 +152,7 @@ function editar(id,nombre,apellidoP,apellidoM,usuario,pass,edad,telefono,email,s
             document.getElementById('edad').value = '';
             document.getElementById('telefono').value = '';
             document.getElementById('email').value = '';
+            boton.innerHTML="Agregar";
             boton.onclick = guardarA;
         })
         .catch(function(error) {
