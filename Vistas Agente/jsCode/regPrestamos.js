@@ -23,6 +23,7 @@ firebase.initializeApp({
     //Cerrar sesion
     btnLogout.addEventListener('click', e => {
         firebase.auth().signOut();
+        window.location.replace("file:///C:/xampp/htdocs/PrestaCasa/Vistas%20Agente/index.html");
     })
 
     //Leer clientes
