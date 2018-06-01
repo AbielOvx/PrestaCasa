@@ -75,7 +75,7 @@ db.collection("Clientes").onSnapshot((querySnapshot) =>{
             <td>${doc.data().Telefono}</td>
             <td>${doc.data().Direccion}</td>
             <td>${doc.data().Sexo}</td>
-            <td><button class="btn btn-warning" onclick="editar('${doc.id}','${doc.data().Nombre}','${doc.data().ApellidoP}','${doc.data().ApellidoM}','${doc.data().Edad}','${doc.data().Telefono}','${doc.data().Direccion}','${doc.data().Sexo}')">Editar</button></td>
+            <td><button class="btn btn-info" onclick="editar('${doc.id}','${doc.data().Nombre}','${doc.data().ApellidoP}','${doc.data().ApellidoM}','${doc.data().Edad}','${doc.data().Telefono}','${doc.data().Direccion}','${doc.data().Sexo}')">Editar</button></td>
             <td><button class="btn btn-danger"  onclick="eliminar('${doc.id}')">Eliminar</button></td>
           </tr>
         `
@@ -84,11 +84,15 @@ db.collection("Clientes").onSnapshot((querySnapshot) =>{
 
 //Borrar documentos
 function eliminar(id){
-    db.collection("Clientes").doc(id).delete().then(function() {
-        console.log("Document successfully deleted!");
-    }).catch(function(error) {
-        console.error("Error removing document: ", error);
-    });
+    var mensaje;
+    var opcion = confirm("¿Esta seguro que desea eliminar este Cliente?");
+    if (opcion == true) {
+        db.collection("Clientes").doc(id).delete().then(function() {
+            console.log("Document successfully deleted!");
+        }).catch(function(error) {
+            console.error("Error removing document: ", error);
+        });
+	}
 }
 
 //Editar Documentos

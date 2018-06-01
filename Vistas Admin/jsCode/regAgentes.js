@@ -166,9 +166,16 @@ function editar(id,nombre,apellidoP,apellidoM,pass,edad,telefono,email,sexo){
 
 //Borrar Documentos
 function eliminar(id){
-    db.collection("Agentes").doc(id).delete().then(function() {
-        console.log("Document successfully deleted!");
-    }).catch(function(error) {
-        console.error("Error removing document: ", error);
-    });
+   
+    var mensaje;
+    var opcion = confirm("¿Esta seguro que desea eliminar este Agente?");
+    if (opcion == true) {
+        db.collection("Agentes").doc(id).delete().then(function() {
+            console.log("Document successfully deleted!");
+        }).catch(function(error) {
+            console.error("Error removing document: ", error);
+        });
+	}
+	    
+	
 }
