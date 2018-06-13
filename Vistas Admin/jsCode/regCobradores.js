@@ -87,16 +87,16 @@ db.collection("Agentes").onSnapshot((querySnapshot) =>{
         console.log(`${doc.id} => ${doc.data().Nombre}`);
         document.getElementById('tabla').innerHTML += `
         <tr>
-            <td class="centerT">${doc.data().Nombre}</td>
-            <td class="centerT">${doc.data().ApellidoP}</td>
-            <td class="centerT">${doc.data().ApellidoM}</td>
-            <td class="centerT"><input type="password" style="border:none; text-align: center" readonly value="${doc.data().Password}"></td>
-            <td class="centerT">${doc.data().Edad}</td>
-            <td class="centerT">${doc.data().Telefono}</td>
-            <td class="centerT">${doc.data().Email}</td>
-            <td class="centerT">${doc.data().Sexo}</td>
-            <td class="centerT"><button class="btn btn-warning" onclick="editar('${doc.id}','${doc.data().Nombre}','${doc.data().ApellidoP}','${doc.data().ApellidoM}','${doc.data().Password}','${doc.data().Edad}','${doc.data().Telefono}','${doc.data().Email}','${doc.data().Sexo}')">Editar</button></td>
-            <td class="centerT"><button class="btn btn-danger"  onclick="eliminar('${doc.id}')">Eliminar</button></td>
+            <td>${doc.data().Nombre}</td>
+            <td>${doc.data().ApellidoP}</td>
+            <td>${doc.data().ApellidoM}</td>
+            <td>${doc.data().Password}</td>
+            <td>${doc.data().Edad}</td>
+            <td>${doc.data().Telefono}</td>
+            <td>${doc.data().Email}</td>
+            <td>${doc.data().Sexo}</td>
+            <td><button class="btn btn-warning" onclick="editar('${doc.id}','${doc.data().Nombre}','${doc.data().ApellidoP}','${doc.data().ApellidoM}','${doc.data().Password}','${doc.data().Edad}','${doc.data().Telefono}','${doc.data().Email}','${doc.data().Sexo}')">Editar</button></td>
+            <td><button class="btn btn-danger"  onclick="eliminar('${doc.id}')">Eliminar</button></td>
           </tr>
         `
     });
@@ -167,7 +167,7 @@ function editar(id,nombre,apellidoP,apellidoM,pass,edad,telefono,email,sexo){
 //Borrar Documentos
 function eliminar(id){
    
-    
+    var mensaje;
     var opcion = confirm("¿Esta seguro que desea eliminar este Agente?");
     if (opcion == true) {
         db.collection("Agentes").doc(id).delete().then(function() {
@@ -178,59 +178,4 @@ function eliminar(id){
 	}
 	    
 	
-}
-
-
-function prueba(){
-    swal("hola","mundo","success",{button:"hi",});
-}
-
-
-
-var docRef = db.collection("Agentes").doc("");
-
-docRef.get().then(function(doc) {
-    if (doc.exists) {
-        console.log("Document data:", doc.data());
-    } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-    }
-}).catch(function(error) {
-    console.log("Error getting document:", error);
-});
-
-
-
-function Lunes(){
-   
-db.collection("Prestamos").where("DiaDePago", "==", 2)
-    .get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-            document.getElementById('prueba2').disabled = true;
-            console.log(doc.id, " => ", doc.data().Cliente);
-            document.getElementById('Lunes').innerHTML += `
-            
-
-            <div class="col-lg-3 col-md-3 wow flipInY" data-wow-delay="1.2s">
-                <div class="packages">
-                    
-                    <h1>${doc.data().Cliente}</h1>
-                    <b>${doc.data().Cantidad}</b>
-                    <p>${doc.data().FechaPrimerPago}</p>
-                    <button class="btn btn-success">Ver</button>
-
-                </div>
-            </div>
-
-            
-            
-            `
-            
-        });
-    })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });
 }

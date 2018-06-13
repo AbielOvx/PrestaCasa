@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="font-awesome-4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animate.min.css">
+    
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase-firestore.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -39,6 +42,7 @@
                 <li><a href="#header">Bienvenido</a></li>
                 <li><a href="#services">Buscar </a></li>
                 <li><a href="#team">Localidades</a></li>
+                <li><a href="#pricing">Día</a></li>
                 <li><a href="#">Cerrar Sesión </a></li>
   
            
@@ -235,6 +239,130 @@
 <!--- End Team ---->
 
 
+<!----- Pricing ------>
+
+<div id="pricing" class="pricing ">
+    <div class=" container">
+        <div class="row">
+            <h2 class="wow fadeInUp">Día de Pago</h2>
+            <p class="wow fadeInUp" data-wow-delay="0.4">orem Ipsum passages, and more recently with desktop publishing software</p>
+            <div class="col-lg-3 col-md-3 wow flipInY" data-wow-delay="0.8s">
+                <div class="packages">
+                    
+                    <h1>LUNES</h1>
+                    <b>Obten tu prestamo ahora</b>
+                    <p>Puedes mandarnos tus datos y te vamos a visitar</p>
+                    <a href="#days" onclick="Lunes()" class="btn btn-success">Ver</a>
+
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 wow flipInY" data-wow-delay="1.2s">
+                <div class="packages">
+                    
+                    <h1>MARTES</h1>
+                    <b>Obten tu prestamo ahora</b>
+                    <p>Puedes mandarnos tus datos y te vamos a visitar</p>
+                    <a href="#days" onclick="Martes()" class="btn btn-success">Ver</a>
+
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 wow flipInY" data-wow-delay="1.6s">
+                <div class="packages">
+                   
+                    <h1> MIERCOLES</h1>
+                    <b>Obten tu prestamo ahora</b>
+                    <p>Puedes mandarnos tus datos y te vamos a visitar</p>
+                    <a href="#days" onclick="Miercoles()" class="btn btn-success">Ver</a>
+
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 wow flipInY" data-wow-delay="2s">
+                <div class="packages">
+                   
+                    <h1>JUEVES</h1>
+                    <b>Obten tu prestamo ahora</b>
+                    <p>Puedes mandarnos tus datos y te vamos a visitar</p>
+                    <a href="#days" onclick="Jueves()" class="btn btn-success">Ver</a>
+
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-3  wow flipInY" data-wow-delay="2.4s" >
+                <div class="packages">
+                   
+                    <h1>VIERNES</h1>
+                    <b>Obten tu prestamo ahora</b>
+                    <p>Puedes mandarnos tus datos y te vamos a visitar</p>
+                    <a href="#days" onclick="Viernes()" class="btn btn-success">Ver</a>
+
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3  wow flipInY" data-wow-delay="2s" >
+                <div class="packages">
+                   
+                    <h1>Sabado</h1>
+                    <b>Obten tu prestamo ahora</b>
+                    <p>Puedes mandarnos tus datos y te vamos a visitar</p>
+                    <a href="#days" onclick="Sabado()" class="btn btn-success">Ver</a>
+
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Days -->
+
+
+        <div id="days" class="days">
+                <div class=" container">
+                    <div class="row">
+    
+                        <div id="Lunes">
+    
+            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+<!-- End Days -->
+
+
+<!-- Calendario -->
+
+
+<div id="calendario" class="calendario">
+    <div class=" container">
+        <div class="row">
+
+            <div id="Calendario">
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- End Calendario -->
+
 
  <!---- Footer ---->
  
@@ -301,5 +429,6 @@
     new WOW().init();
     </script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="jsCode/app.js"></script>
   </body>
 </html>

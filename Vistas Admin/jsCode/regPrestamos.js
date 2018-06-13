@@ -69,15 +69,17 @@ function pago(){
 
     document.getElementById('fecha').value = f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
     document.getElementById('fpPago').value = myDate.getDate() + "/" + (myDate.getMonth() +1) + "/" + myDate.getFullYear();
+    var fpPago1 = myDate.getDay();
 
 
 
 //Crear Documentos
-  function guardarP(){
+   guardarP = function(){
       var cliente = document.getElementById('clientes').value;
       var cantidad = document.getElementById('cantidad').value;
       var fecha = document.getElementById('fecha').value;
       var fpPago = document.getElementById('fpPago').value;
+      var dia = fpPago1;
       var semanas = document.getElementById('semanas').value;
       var interes = document.getElementById('interes').value;
       var pSemanal = document.getElementById('pSemanal').value;
@@ -88,6 +90,7 @@ function pago(){
         Cantidad: cantidad,
         Fecha: fecha,
         FechaPrimerPago: fpPago,
+        DiaDePago: fpPago1,
         Semanas:semanas,
         Interes:interes,
         PagoSemanal:pSemanal,
@@ -317,5 +320,5 @@ function autocomplete(inp, arr) {
            names.push(clientes);
                   
       });
-      autocomplete(document.getElementById("myInput"), names);
+      autocomplete(document.getElementById("clientes"), names);
   });

@@ -6,6 +6,7 @@ firebase.initializeApp({
     storageBucket: "prestacasa-1758e.appspot.com",
     messagingSenderId: "315948810598"
   });
+
   
   // Initialize Cloud Firestore through Firebase
   var db = firebase.firestore();
@@ -98,4 +99,232 @@ function editar(id,nombre,apellido,fecha){
             console.error("Error updating document: ", error);
         });
     }
+}
+
+
+function Lunes(){
+    ficha = document.getElementById('Lunes');
+    db.collection("Prestamos").where("DiaDePago", "==", 1)
+        .get()
+        .then(function(querySnapshot) {
+            ficha.innerHTML='';
+            querySnapshot.forEach(function(doc) {
+                
+                console.log(doc.id, " => ", doc.data().Cliente);
+                document.getElementById('Lunes').innerHTML += `
+                
+                <div class="col-lg-3 col-md-3 wow flipInY" data-wow-delay="1.2s">
+                    <div class="packages">
+                        
+                        <h1>${doc.data().Cliente}</h1>
+                        <b>${doc.data().Cantidad}</b>
+                        <p>${doc.data().FechaPrimerPago}</p>
+                        <a href="#calendario" onclick="Calendario('${doc.data().Cliente}','${doc.data().PagoTotal}','${doc.data().FechaPrimerPago}','${doc.data().PagoSemanal}')" class="btn btn-success">Ver</a>
+    
+                    </div>
+                </div>
+                
+                `
+            });
+        })
+        .catch(function(error) {
+            console.log("Error getting documents: ", error);
+        });
+}
+
+function Martes(){
+    ficha = document.getElementById('Lunes');
+    db.collection("Prestamos").where("DiaDePago", "==", 2)
+        .get()
+        .then(function(querySnapshot) {
+            ficha.innerHTML='';
+            querySnapshot.forEach(function(doc) {
+                
+                console.log(doc.id, " => ", doc.data().Cliente);
+                document.getElementById('Lunes').innerHTML += `
+                
+                <div class="col-lg-3 col-md-3 wow flipInY" data-wow-delay="1.2s">
+                    <div class="packages">
+                        
+                        <h1>${doc.data().Cliente}</h1>
+                        <b>${doc.data().Cantidad}</b>
+                        <p>${doc.data().FechaPrimerPago}</p>
+                        <a href="#calendario" onclick="Calendario('${doc.data().Cliente}','${doc.data().PagoTotal}','${doc.data().FechaPrimerPago}','${doc.data().PagoSemanal}')" class="btn btn-success">Ver</a>
+    
+                    </div>
+                </div>
+                
+                `
+            });
+        })
+        .catch(function(error) {
+            console.log("Error getting documents: ", error);
+        });
+}
+
+function Miercoles(){
+    ficha = document.getElementById('Lunes');
+    db.collection("Prestamos").where("DiaDePago", "==", 3)
+        .get()
+        .then(function(querySnapshot) {
+            ficha.innerHTML='';
+            querySnapshot.forEach(function(doc) {
+                
+                console.log(doc.id, " => ", doc.data().Cliente);
+                document.getElementById('Lunes').innerHTML += `
+                
+                <div class="col-lg-3 col-md-3 wow flipInY" data-wow-delay="1.2s">
+                    <div class="packages">
+                        
+                        <h1>${doc.data().Cliente}</h1>
+                        <b>${doc.data().Cantidad}</b>
+                        <p>${doc.data().FechaPrimerPago}</p>
+                        <a href="#calendario" onclick="Calendario('${doc.data().Cliente}','${doc.data().PagoTotal}','${doc.data().FechaPrimerPago}','${doc.data().PagoSemanal}')" class="btn btn-success">Ver</a>
+    
+                    </div>
+                </div>
+                
+                `
+            });
+        })
+        .catch(function(error) {
+            console.log("Error getting documents: ", error);
+        });
+}
+
+function Jueves(){
+    ficha = document.getElementById('Lunes');
+    db.collection("Prestamos").where("DiaDePago", "==", 4)
+        .get()
+        .then(function(querySnapshot) {
+            ficha.innerHTML='';
+            querySnapshot.forEach(function(doc) {
+                
+                console.log(doc.id, " => ", doc.data().Cliente);
+                document.getElementById('Lunes').innerHTML += `
+                
+                <div class="col-lg-3 col-md-3 wow flipInY" data-wow-delay="1.2s">
+                    <div class="packages">
+                        
+                        <h1>${doc.data().Cliente}</h1>
+                        <b>${doc.data().Cantidad}</b>
+                        <p>${doc.data().FechaPrimerPago}</p>
+                        <a href="#calendario" onclick="Calendario('${doc.data().Cliente}','${doc.data().PagoTotal}','${doc.data().FechaPrimerPago}','${doc.data().PagoSemanal}')" class="btn btn-success">Ver</a>
+    
+                    </div>
+                </div>
+                
+                `
+            });
+        })
+        .catch(function(error) {
+            console.log("Error getting documents: ", error);
+        });
+}
+
+function Viernes(){
+    ficha = document.getElementById('Lunes');
+    db.collection("Prestamos").where("DiaDePago", "==", 5)
+        .get()
+        .then(function(querySnapshot) {
+            ficha.innerHTML='';
+            querySnapshot.forEach(function(doc) {
+                
+                console.log(doc.id, " => ", doc.data().Cliente);
+                document.getElementById('Lunes').innerHTML += `
+                
+                <div class="col-lg-3 col-md-3 wow flipInY" data-wow-delay="1.2s">
+                    <div class="packages">
+                        
+                        <h1>${doc.data().Cliente}</h1>
+                        <b>${doc.data().Cantidad}</b>
+                        <p>${doc.data().FechaPrimerPago}</p>
+                        <a href="#calendario" onclick="Calendario('${doc.data().Cliente}','${doc.data().PagoTotal}','${doc.data().FechaPrimerPago}','${doc.data().PagoSemanal}')" class="btn btn-success">Ver</a>
+    
+                    </div>
+                </div>
+                
+                `
+            });
+        })
+        .catch(function(error) {
+            console.log("Error getting documents: ", error);
+        });
+}
+
+function Sabado(){
+    ficha = document.getElementById('Lunes');
+    db.collection("Prestamos").where("DiaDePago", "==", 6)
+        .get()
+        .then(function(querySnapshot) {
+            ficha.innerHTML='';
+            querySnapshot.forEach(function(doc) {
+                
+                console.log(doc.id, " => ", doc.data().Cliente);
+                document.getElementById('Lunes').innerHTML += `
+                
+                <div class="col-lg-3 col-md-3 wow flipInY" data-wow-delay="1.2s">
+                    <div class="packages">
+                        
+                        <h1>${doc.data().Cliente}</h1>
+                        <b>${doc.data().Cantidad}</b>
+                        <p>${doc.data().FechaPrimerPago}</p>
+                        <a href="#calendario" onclick="Calendario('${doc.data().Cliente}','${doc.data().PagoTotal}','${doc.data().FechaPrimerPago}','${doc.data().PagoSemanal}')" class="btn btn-success">Ver</a>
+    
+                    </div>
+                </div>
+                
+                `
+            });
+        })
+        .catch(function(error) {
+            console.log("Error getting documents: ", error);
+        });
+}
+
+
+
+function Calendario(cliente,cantidad,fecha,pago){
+
+document.getElementById('Calendario').innerHTML='';
+var contador = 1;
+for (let i = 0; i < cantidad; i++) {
+
+    
+
+    document.getElementById('Calendario').innerHTML += 
+    
+        `
+                    
+        <div class="col-lg-3 col-md-3 wow flipInY" data-wow-delay="1.2s">
+            <div class="packages">
+                
+                <h1>Pago Num: ${contador}</h1>
+                <h3>${cliente}</h3>
+                <b>${cantidad}</b>
+                <p>${fecha}</p>
+                <p>${pago}</p>
+                <a href="#calendario" onclick="" class="btn btn-success">Pagar</a>
+    
+            </div>
+        </div>
+        
+        `
+        cantidad = cantidad-pago;
+        contador += 1;
+
+        if(cantidad<pago){
+            pago = cantidad;
+        }
+
+      
+      
+
+        
+        
+
+}
+        
+        
+   
 }

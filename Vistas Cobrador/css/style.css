@@ -232,7 +232,62 @@ p {
     margin-top: 80px;
 }
 
+/* DAYS */
+.days {
+    
+    padding: 50px 0 80px;
+    text-align: center;
+    background-color: slateblue;
+}
 
+.days h2,
+.days p {
+    
+    color: #fff;
+}
+
+.days p {
+    
+    padding-bottom: 40px;
+}
+
+.days .packages {
+    
+    padding: 30px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+
+/* CALENDARIO */
+.calendario {
+    
+    padding: 50px 0 80px;
+    text-align: center;
+    background-color: salmon;
+}
+
+.calendario h2,
+.calendario p {
+    
+    color: #fff;
+}
+
+.calendario p {
+    
+    padding-bottom: 40px;
+}
+
+.calendario .packages {
+    
+    padding: 30px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-top: 30px;
+}
 
 
 /*PRICING*/

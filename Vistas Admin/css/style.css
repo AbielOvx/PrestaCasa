@@ -23,6 +23,11 @@ a {
     transition: all 500ms ease-in-out;
 }
 
+
+.centerT{
+ text-align: center
+}
+
 a:hover,
 a:active {
 
