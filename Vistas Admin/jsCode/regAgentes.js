@@ -166,7 +166,14 @@ function editar(id,nombre,apellidoP,apellidoM,pass,edad,telefono,email,sexo){
 
 //Borrar Documentos
 function eliminar(id){
-   
+    
+   var user = firebase.auth().currentUser;
+    user.delete().then(function () {
+        alert('Se ha eliminado');
+    }).catch(function (error) {
+        alert('Ha ocurrido un error');
+    });
+    var mensaje;
     
     var opcion = confirm("¿Esta seguro que desea eliminar este Agente?");
     if (opcion == true) {
