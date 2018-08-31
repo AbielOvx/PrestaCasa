@@ -181,10 +181,6 @@ function eliminar(id){
 }
 
 
-function prueba(){
-    swal("hola","mundo","success",{button:"hi",});
-}
-
 
 
 var docRef = db.collection("Agentes").doc("");
@@ -199,38 +195,3 @@ docRef.get().then(function(doc) {
 }).catch(function(error) {
     console.log("Error getting document:", error);
 });
-
-
-
-function Lunes(){
-   
-db.collection("Prestamos").where("DiaDePago", "==", 2)
-    .get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-            document.getElementById('prueba2').disabled = true;
-            console.log(doc.id, " => ", doc.data().Cliente);
-            document.getElementById('Lunes').innerHTML += `
-            
-
-            <div class="col-lg-3 col-md-3 wow flipInY" data-wow-delay="1.2s">
-                <div class="packages">
-                    
-                    <h1>${doc.data().Cliente}</h1>
-                    <b>${doc.data().Cantidad}</b>
-                    <p>${doc.data().FechaPrimerPago}</p>
-                    <button class="btn btn-success">Ver</button>
-
-                </div>
-            </div>
-
-            
-            
-            `
-            
-        });
-    })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });
-}

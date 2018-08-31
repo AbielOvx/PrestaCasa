@@ -119,7 +119,7 @@ function Lunes(){
                         <h1>${doc.data().Cliente}</h1>
                         <b>${doc.data().Cantidad}</b>
                         <p>${doc.data().FechaPrimerPago}</p>
-                        <a href="#calendario" onclick="Calendario('${doc.data().Cliente}','${doc.data().PagoTotal}','${doc.data().FechaPrimerPago}','${doc.data().PagoSemanal}')" class="btn btn-success">Ver</a>
+                        <a href="#calendario" onclick="Calendario('${doc.data().Cliente}','${doc.data().Semanas}','${doc.data().PagoTotal}','${doc.data().FechaPrimerPago}','${doc.data().PagoSemanal}')" class="btn btn-success">Ver</a>
     
                     </div>
                 </div>
@@ -149,7 +149,7 @@ function Martes(){
                         <h1>${doc.data().Cliente}</h1>
                         <b>${doc.data().Cantidad}</b>
                         <p>${doc.data().FechaPrimerPago}</p>
-                        <a href="#calendario" onclick="Calendario('${doc.data().Cliente}','${doc.data().PagoTotal}','${doc.data().FechaPrimerPago}','${doc.data().PagoSemanal}')" class="btn btn-success">Ver</a>
+                        <a href="#calendario" onclick="Calendario('${doc.data().Cliente}','${doc.data().Semanas}','${doc.data().PagoTotal}','${doc.data().FechaPrimerPago}','${doc.data().PagoSemanal}')" class="btn btn-success">Ver</a>
     
                     </div>
                 </div>
@@ -179,7 +179,7 @@ function Miercoles(){
                         <h1>${doc.data().Cliente}</h1>
                         <b>${doc.data().Cantidad}</b>
                         <p>${doc.data().FechaPrimerPago}</p>
-                        <a href="#calendario" onclick="Calendario('${doc.data().Cliente}','${doc.data().PagoTotal}','${doc.data().FechaPrimerPago}','${doc.data().PagoSemanal}')" class="btn btn-success">Ver</a>
+                        <a href="#calendario" onclick="Calendario('${doc.data().Cliente}','${doc.data().Semanas}','${doc.data().PagoTotal}','${doc.data().FechaPrimerPago}','${doc.data().PagoSemanal}')" class="btn btn-success">Ver</a>
     
                     </div>
                 </div>
@@ -209,7 +209,7 @@ function Jueves(){
                         <h1>${doc.data().Cliente}</h1>
                         <b>${doc.data().Cantidad}</b>
                         <p>${doc.data().FechaPrimerPago}</p>
-                        <a href="#calendario" onclick="Calendario('${doc.data().Cliente}','${doc.data().PagoTotal}','${doc.data().FechaPrimerPago}','${doc.data().PagoSemanal}')" class="btn btn-success">Ver</a>
+                        <a href="#calendario" onclick="Calendario('${doc.data().Cliente}','${doc.data().Semanas}','${doc.data().PagoTotal}','${doc.data().FechaPrimerPago}','${doc.data().PagoSemanal}')" class="btn btn-success">Ver</a>
     
                     </div>
                 </div>
@@ -239,7 +239,7 @@ function Viernes(){
                         <h1>${doc.data().Cliente}</h1>
                         <b>${doc.data().Cantidad}</b>
                         <p>${doc.data().FechaPrimerPago}</p>
-                        <a href="#calendario" onclick="Calendario('${doc.data().Cliente}','${doc.data().PagoTotal}','${doc.data().FechaPrimerPago}','${doc.data().PagoSemanal}')" class="btn btn-success">Ver</a>
+                        <a href="#calendario" onclick="Calendario('${doc.data().Cliente}','${doc.data().Semanas}','${doc.data().PagoTotal}','${doc.data().FechaPrimerPago}','${doc.data().PagoSemanal}')" class="btn btn-success">Ver</a>
     
                     </div>
                 </div>
@@ -269,7 +269,7 @@ function Sabado(){
                         <h1>${doc.data().Cliente}</h1>
                         <b>${doc.data().Cantidad}</b>
                         <p>${doc.data().FechaPrimerPago}</p>
-                        <a href="#calendario" onclick="Calendario('${doc.data().Cliente}','${doc.data().PagoTotal}','${doc.data().FechaPrimerPago}','${doc.data().PagoSemanal}')" class="btn btn-success">Ver</a>
+                        <a href="#calendario" onclick="Calendario('${doc.data().Cliente}','${doc.data().Semanas}','${doc.data().PagoTotal}','${doc.data().FechaPrimerPago}','${doc.data().PagoSemanal}')" class="btn btn-success">Ver</a>
     
                     </div>
                 </div>
@@ -284,47 +284,38 @@ function Sabado(){
 
 
 
-function Calendario(cliente,cantidad,fecha,pago){
+function Calendario(cliente,semanas,cantidad,fecha,pago){
 
-document.getElementById('Calendario').innerHTML='';
-var contador = 1;
-for (let i = 0; i < cantidad; i++) {
-
-    
-
-    document.getElementById('Calendario').innerHTML += 
-    
-        `
+    document.getElementById('Calendario').innerHTML='';
+    var contador = 1;
+        for (let i = 1; i <= semanas; i++) {
+            document.getElementById('Calendario').innerHTML += 
+                `
+                <div class="col-lg-3 col-md-3 wow flipInY" data-wow-delay="1.2s">
+                    <div class="packages">
                     
-        <div class="col-lg-3 col-md-3 wow flipInY" data-wow-delay="1.2s">
-            <div class="packages">
+                        <h1>Pago Num: ${contador}</h1>
+                        <h3>${cliente}</h3>
+                        <b>${cantidad}</b>
+                        <p>${fecha}</p>
+                        <p>${pago}</p>
+                        <a href="#calendario" onclick="" class="btn btn-success">Pagar</a>
+        
+                    </div>
+                </div>
+            
+                `
                 
-                <h1>Pago Num: ${contador}</h1>
-                <h3>${cliente}</h3>
-                <b>${cantidad}</b>
-                <p>${fecha}</p>
-                <p>${pago}</p>
-                <a href="#calendario" onclick="" class="btn btn-success">Pagar</a>
-    
-            </div>
-        </div>
-        
-        `
-        cantidad = cantidad-pago;
-        contador += 1;
+            cantidad = cantidad-pago;
+            contador += 1;
+            
 
-        if(cantidad<pago){
-            pago = cantidad;
+            
+            if(cantidad<pago){
+                pago = cantidad;
+            }  
+
         }
-
-      
-      
-
-        
-        
-
-}
-        
-        
+           
    
 }
